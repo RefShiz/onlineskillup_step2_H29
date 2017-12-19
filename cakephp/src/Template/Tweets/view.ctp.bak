@@ -1,0 +1,36 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Tweet $tweet
+ */
+?>
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('Edit Tweet'), ['action' => 'edit', $tweet->tweetid]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Tweet'), ['action' => 'delete', $tweet->tweetid], ['confirm' => __('Are you sure you want to delete # {0}?', $tweet->tweetid)]) ?> </li>
+        <li><?= $this->Html->link(__('List Tweets'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Tweet'), ['action' => 'add']) ?> </li>
+    </ul>
+</nav>
+<div class="tweets view large-9 medium-8 columns content">
+    <h3><?= h($tweet->tweetid) ?></h3>
+    <table class="vertical-table">
+        <tr>
+            <th scope="row"><?= __('Tweetid') ?></th>
+            <td><?= $this->Number->format($tweet->tweetid) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('User Id') ?></th>
+            <td><?= $this->Number->format($tweet->user_id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Created At') ?></th>
+            <td><?= h($tweet->created_at) ?></td>
+        </tr>
+    </table>
+    <div class="row">
+        <h4><?= __('Tweet') ?></h4>
+        <?= $this->Text->autoParagraph(h($tweet->tweet)); ?>
+    </div>
+</div>
